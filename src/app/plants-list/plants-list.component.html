@@ -1,0 +1,36 @@
+
+
+<ng-container *ngIf="!showError; else hibavan">
+    <ng-container *ngIf="adatok; else varakozas">
+        
+
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            <div *ngFor="let noveny of adatok" class="col">
+              <div class="card h-100">
+                <img [src]="noveny.kepUrl" class="card-img-top" [alt]="noveny.megnevezes">
+                <div class="card-body">
+                  <h5 class="card-title">{{noveny.megnevezes}}</h5>
+                  <p class="card-text">{{noveny.leiras}}</p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">{{noveny.ar}}Ft</small>
+                </div>
+              </div>
+            </div>
+        </div>
+
+    </ng-container>
+    <ng-template #varakozas>
+        <div class="alert alert-warning" role="alert">
+            A szerver elfoglalt!
+        </div>
+    </ng-template>
+    
+    
+</ng-container>
+
+<ng-template #hibavan>
+    <div class="alert alert-danger" role="alert">
+        {{errorMessage}}
+    </div>
+</ng-template>
